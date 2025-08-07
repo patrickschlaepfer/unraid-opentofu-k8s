@@ -47,7 +47,25 @@ k8s-1         Ready    worker                 6m39s   v1.32.6
 k8s-control   Ready    control-plane,worker   32m     v1.32.6
 ```
 
- 
+## install kubectl
+
+On the control node
+
+```
+sudo snap install kubectl --classic
+mkdir ~/.kube
+sudo k8s config > ~/.kube/config
+kubectl get namespaces # to test the credentials
+```
+
+Change to your local machine, as for this example my Mac and copy the kube-config
+by `ssh`
+
+    $ scp kubeuser@10.3.1.221:/home/kubeuser/.kube/config .
+
+Test the connection
+
+    $ kubectl get namespace
 
 
 

@@ -8,6 +8,18 @@ I think it might be a some sort of approach.
 For the kubernetes part, I try to use 
 Canonical Kubernetes, which should include some basic services.
 
+## Required tools
+
+To deploy all the components, I used a Mac. Where I added the following packages
+by homebrew
+
+- opentofu
+- kubernetes-cli
+
 ## opentofu
 
 Contains the Opentofu files, to set up your VMs.
+
+## canonical_kubernetes
+
+Contains the instructions how to setup Canonical Kubernetes
