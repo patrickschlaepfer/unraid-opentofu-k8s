@@ -26,7 +26,7 @@ data "template_file" "cloud_init_config" {
     vars = {
         vm_name        = each.value.name
         user_name      = each.value.user_name
-        ssh_public_key = each.value.ssh_key
+        ssh_public_key = local.ssh_public_key
     }
 }
 
@@ -156,13 +156,22 @@ variable "domains_path" {
     default     = "/mnt/special/domains/tofu"
 }
 
+variable "ssh_public_key" {
+  default     = "~/.ssh/id_ed25519.pub"
+  type        = string
+  description = "Path to your public key"
+}
+
+locals {
+  ssh_public_key = file(var.ssh_public_key)
+}
+
 variable "instances" {
     type = map(object({
         name         = string
         cores        = number
         memory       = number
         user_name    = string
-        ssh_key      = string
         ipv4         = string
         disk_size_gb = number
     }))
@@ -172,7 +181,6 @@ variable "instances" {
             cores        = 2
             memory       = 8192
             user_name    = "kubeuser"
-            ssh_key      = "<YOUR_SSH_PUBLIC_KEY_FOR_UNRAID>"
             ipv4         = "<IP_ADDRESS/NETMASK>"
             disk_size_gb = 20
         }
