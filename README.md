@@ -15,6 +15,7 @@ by homebrew
 
 - opentofu
 - kubernetes-cli
+- helm
 
 ## opentofu
 
