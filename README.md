@@ -16,6 +16,7 @@ by homebrew
 - opentofu
 - kubernetes-cli
 - helm
+- cilium-cli
 
 ## opentofu
 
