@@ -175,23 +175,4 @@ variable "instances" {
         ipv4         = string
         disk_size_gb = number
     }))
-    default = {
-        instance1 = { 
-            name         = "k8s-control"
-            cores        = 2
-            memory       = 8192
-            user_name    = "kubeuser"
-            ipv4         = "<IP_ADDRESS/NETMASK>"
-            disk_size_gb = 20
-        }
-        instance2 = {
-            name         = "k8s-1"
-            cores        = 2
-            memory       = 8192
-            user_name    = "kubeuser"
-            ssh_key      = "<YOUR_SSH_PUBLIC_KEY_FOR_UNRAID>"
-            ipv4         = "<IP_ADDRESS/NETMASK>"
-            disk_size_gb = 20
-        }
-    }
 }

@@ -14,12 +14,28 @@ Add the `LIBVIRT_DEFAULT_URI` which points to your unraid server, like
 
     LIBVIRT_DEFAULT_URI="qemu+ssh://<UNRAID_USER>@<UNRAID_IP>/system?sshauth=privkey&keyfile=<PATH_TO_YOUR_PRIVATE_KEY>&no_verify=1"
 
+You could overwrite all variables by adding them with the `TF_VAR_`prefix.
 
+## How to add VMs.
+
+Create a file called `vms.auto.tfvars`, where you will add all the VMs, which should be created.
+
+The file should have the following structure
+
+```
+instances = {
+    instance1 = { 
+        name         = "k8s-control"
+        cores        = 4
+        memory       = 8192
+        user_name    = "kubeuser"
+        ipv4         = "10.3.1.221/24"
+        disk_size_gb = 20
+    }
+}
+```
 
 ## Setup up the VMs
-
-At the ond of `qemu-vm` add as many VMs you would like to have.
-Adjust the parameters to your need.
 
 Go through all other files, and change the setting to your needs.
 I will try to put all the variables at the end.
