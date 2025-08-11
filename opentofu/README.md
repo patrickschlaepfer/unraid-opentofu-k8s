@@ -6,6 +6,16 @@ you will find here: https://github.com/mcreekmore/unraid-terraform.git
 It is not an introduction to OpenTofu. In order to deploy
 just do
 
+## Setup the environment
+
+Create a `.env` file
+
+Add the `LIBVIRT_DEFAULT_URI` which points to your unraid server, like
+
+    LIBVIRT_DEFAULT_URI="qemu+ssh://<UNRAID_USER>@<UNRAID_IP>/system?sshauth=privkey&keyfile=<PATH_TO_YOUR_PRIVATE_KEY>&no_verify=1"
+
+
+
 ## Setup up the VMs
 
 At the ond of `qemu-vm` add as many VMs you would like to have.

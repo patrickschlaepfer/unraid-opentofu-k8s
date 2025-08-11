@@ -13,7 +13,3 @@ terraform {
     }
   }
 }
-
-provider "libvirt" {
-  uri = "qemu+ssh://root@<UNRAID_IP_ADDRESS>/system?sshauth=privkey&keyfile=<PATH_TO_YOUR_PRIVATE_KEY>&no_verify=1"
-}
