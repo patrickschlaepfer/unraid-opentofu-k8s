@@ -24,7 +24,7 @@ data "template_file" "cloud_init_config" {
 
     template = file("${path.module}/cloud_user_data.tftpl")
     vars = {
-        vm_name        = each.value.name
+        vm_name        = each.key
         user_name      = each.value.user_name
         ssh_public_key = local.ssh_public_key
     }
@@ -64,7 +64,7 @@ resource "libvirt_cloudinit_disk" "cloud_init" {
 resource "libvirt_domain" "qemu-vm" {
     for_each = var.instances
     
-    name   = each.value.name
+    name   = each.key
     memory = each.value.memory
     vcpu   = each.value.cores
     autostart  = true
@@ -168,7 +168,6 @@ locals {
 
 variable "instances" {
     type = map(object({
-        name         = string
         cores        = number
         memory       = number
         user_name    = string

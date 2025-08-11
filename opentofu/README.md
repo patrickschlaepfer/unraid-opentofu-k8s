@@ -24,8 +24,7 @@ The file should have the following structure
 
 ```
 instances = {
-    instance1 = { 
-        name         = "k8s-control"
+    "k8s-control" = { 
         cores        = 4
         memory       = 8192
         user_name    = "kubeuser"
