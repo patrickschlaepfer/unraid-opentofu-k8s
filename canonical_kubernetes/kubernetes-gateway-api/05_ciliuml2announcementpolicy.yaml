@@ -1,0 +1,13 @@
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: schlaepfer-l2advertisement-policy
+  namespace: kube-system
+spec:
+  serviceSelector:
+    matchLabels:
+      io.cilium.gateway/owning-gateway: schlaepfer
+  interfaces:
+    - ^enx+ # host interface regex
+  externalIPs: true
+  loadBalancerIPs: true
