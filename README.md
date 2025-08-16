@@ -24,4 +24,6 @@ Contains the Opentofu files, to set up your VMs.
 
 ## canonical_kubernetes
 
-Contains the instructions how to setup Canonical Kubernetes
+Contains the instructions how to setup Canonical Kubernetes,
+using cert-manager to get a wildcard certificate and
+the Kubernetes Dashboard.

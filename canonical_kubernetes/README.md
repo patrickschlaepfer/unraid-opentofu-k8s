@@ -2,6 +2,15 @@
 
 Basically followed the instructions from here https://ubuntu.com/kubernetes/install
 
+Documentation
+
+- https://documentation.ubuntu.com/canonical-kubernetes/latest/
+
+Or a links for vanilla K8s
+
+- https://www.youtube.com/watch?v=yHbcpBkTLNU
+- https://www.youtube.com/watch?v=j3a2Sr2n8eQ
+
 ## Steps to install 
 
 ### master/control node

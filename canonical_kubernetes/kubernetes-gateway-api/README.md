@@ -3,23 +3,30 @@
 ## Links
 
 - https://kubito.dev/posts/gateway-api-setup-cilium-load-balancing/
+- https://kubernetes.io/docs/concepts/services-networking/gateway/
+- https://www.youtube.com/watch?v=RQbc_Yjb9ls
 
-## CiliumLoadBalancerIPPool
 
-Show all CiliumLoadBalancerIPPool
+## Using cilium - metallb
 
-    $ kubectl get CiliumLoadBalancerIPPool -A
+Check for the gateway status. Gatway should be enabled by default.
 
-Delete a CiliumLoadBalancerIPPool
+    $ sudo k8s
 
-    $ kubectl delete CiliumLoadBalancerIPPool example-ip-pool
+Enable the load-balancer
 
-## CiliumL2AnnouncementPolicy
+    $ sudo k8s enable load-balancer
 
-Show all CiliumL2AnnouncementPolicy
+Calculate your cidr (https://account.arin.net/public/cidrCalculator) 
+and then set it by the following command
 
-    $ kubectl get CiliumL2AnnouncementPolicy -A
+    $ sudo k8s set load-balancer.cidrs=10.3.1.250/30 load-balancer.l2-mode=true
 
-Delete
 
-    $ kubectl delete CiliumL2AnnouncementPolicy example-l2advertisement-policy
+    $ kubectl -n kube-system rollout restart deployment/cilium-operator
+    $ kubectl -n kube-system rollout restart ds/cilium
+
+    $ kubectl -n kube-system rollout restart ds/cilium
+    $ kubectl -n metallb-system rollout restart ds/metallb-speaker
+
+

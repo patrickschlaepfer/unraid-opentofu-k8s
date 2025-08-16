@@ -10,7 +10,7 @@ spec:
     namespace: common
     sectionName: http-schlaepfer
   hostnames:
-  - "*.schlaepfer.com"
+  - "*.apps.schlaepfer.com"
   rules:
   - filters:
     - type: RequestRedirect
