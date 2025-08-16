@@ -12,6 +12,33 @@ spec:
   hostnames:
   - "kubernetes-dashboard.apps.schlaepfer.com"
   rules:
-  - backendRefs:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api
+    - path:
+        type: PathPrefix
+        value: /metrics
+    backendRefs:
+    - name: kubernetes-dashboard-api
+      port: 8000
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/login
+    - path:
+        type: PathPrefix
+        value: /api/v1/csrftoken/login
+    - path:
+        type: PathPrefix
+        value: /api/v1/me
+    backendRefs:
+    - name: kubernetes-dashboard-auth
+      port: 8000
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
     - name: kubernetes-dashboard-web
       port: 8000
