@@ -1,0 +1,34 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: zerossl-production
+  namespace: cert-manager
+spec:
+  acme:
+    # ZeroSSL ACME server
+    server: https://acme.zerossl.com/v2/DV90
+    email: <youremail-address>
+
+    # name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: zerossl-prod
+
+    # for each cert-manager new EAB credencials are required
+    externalAccountBinding:
+      keyID: <ZERO SSL EAB KID>
+      keySecretRef:
+        name: zero-ssl-eabsecret
+        key: secret
+
+    # ACME DNS-01 provider configurations to verify domain
+    solvers:
+    - selector: {}
+      dns01:
+        route53:
+          region: us-west-2
+          # optional if ambient credentials are available; see ambient credentials documentation
+          # see Route53 for >0 issue "letsencrypt.org" and change to >0 issue "sectigo.com"
+          accessKeyID: <AMAZON ACCESS KEY ID>
+          secretAccessKeySecretRef:
+            name: route53-credentials-secret
+            key: secret-access-key
